@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteAppWPF"
         mc:Ignorable="d"
-        Title="NoteApp" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
+        Title="NoteApp" Height="600" Width="1200" MinHeight="600" MinWidth="1200" Icon="icon.ico">
 
     <Window.Resources>
         <Style TargetType="TextBlock">
@@ -34,7 +34,7 @@
                 <MenuItem Header="Exit"></MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Add"></MenuItem>
+                <MenuItem Header="Add" Click="MenuAdd_OnClick"></MenuItem>
                 <MenuItem Header="Edit"></MenuItem>
                 <MenuItem Header="Remove"></MenuItem>
             </MenuItem>

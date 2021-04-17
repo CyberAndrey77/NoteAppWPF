@@ -10,28 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NoteAppWPF
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для NoteWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NoteWindow : Window
     {
-        public MainWindow()
+        public NoteWindow()
         {
             InitializeComponent();
         }
 
-        private void MenuAdd_OnClick(object sender, RoutedEventArgs e)
+        private void Button_OnClickOK(object sender, RoutedEventArgs e)
         {
-            var noteWindow = new NoteWindow();
-            if (noteWindow.ShowDialog() == true)
-            {
-
-            }
+            DialogResult = true;
+            Close();
         }
     }
 }
