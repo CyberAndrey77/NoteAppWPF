@@ -50,6 +50,7 @@
     <Compile Include="Note.cs" />
     <Compile Include="NoteCategory.cs" />
     <Compile Include="ProjectManager.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

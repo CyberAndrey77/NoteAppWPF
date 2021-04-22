@@ -73,9 +73,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\MainWindowViewModel.cs" />
     <Compile Include="NoteWindow.xaml.cs">
       <DependentUpon>NoteWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\NoteAppWPF\NoteApp\NoteApp.csproj">
+      <Project>{7a0eafa5-a8ff-4960-af3c-ea2225ef628a}</Project>
+      <Name>NoteApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

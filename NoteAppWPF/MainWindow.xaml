@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NoteAppWPF"
+        xmlns:local="clr-namespace:NoteAppWPF.MVVM" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="NoteApp" Height="600" Width="1200" MinHeight="600" MinWidth="1200" Icon="icon.ico">
 
@@ -26,7 +26,14 @@
 
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Select category:" TextAlignment="Left" Margin="5, 0, 0, 0"/>
         <ComboBox Grid.Column="0" Grid.Row="1" Margin="30, 0, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="260" FontSize="16"/>
-        <ListBox Grid.Column="0" Grid.Row="1" Margin="0, 30, 0, 0">
+        <ListBox Grid.Column="0" Grid.Row="1" Margin="0, 30, 0, 0" ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="15">
@@ -41,14 +48,20 @@
             <MenuItem Header="About"></MenuItem>
         </Menu>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Name" FontSize="20" FontWeight="Bold" Margin="30, 15, 0, 0"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Category:" FontSize="16" Margin="30, 50, 0, 0"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Selected Category" Margin="100, 50, 0, 0"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedNote.Name, UpdateSourceTrigger=PropertyChanged}" FontSize="20" FontWeight="Bold" Margin="30, 15, 0, 0"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Category" FontSize="16" Margin="30, 50, 0, 0"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedNote.Category, UpdateSourceTrigger=PropertyChanged}" Margin="100, 50, 0, 0"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Created:"  Margin="30, 80, 0, 0"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Date"  Margin="100, 80, 0, 0"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedNote.Created, UpdateSourceTrigger=PropertyChanged}"  Margin="100, 80, 0, 0"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Modified:"  Margin="230, 80, 0, 0"></TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Date"  Margin="310, 80, 0, 0"></TextBlock>
-        <RichTextBox VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="30, 115, 5, 5" Block.LineHeight="1" FontSize="16"></RichTextBox>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SelectedNote.Modified, UpdateSourceTrigger=PropertyChanged}"  Margin="310, 80, 0, 0"></TextBlock>
+        <RichTextBox VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="30, 115, 5, 5" Block.LineHeight="1" FontSize="16">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding SelectedNote.Text}"></Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
         
     </Grid>

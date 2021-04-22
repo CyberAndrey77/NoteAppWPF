@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NoteApp.Annotations;
 
 namespace NoteApp
 {
     /// <summary>
     /// Класс заметка.
     /// </summary>
-    public class Note : ICloneable, IEquatable<Note>
+    public class Note : ICloneable, IEquatable<Note>, INotifyPropertyChanged
     {
         /// <summary>
         /// Название заметки.
@@ -58,6 +61,7 @@ namespace NoteApp
                     throw new ArgumentException($"The note must have a title!");
                 }
                 _name = value;
+                OnPropertyChanged("Name");
                 Modified = DateTime.Now;
             }
         }
@@ -74,6 +78,7 @@ namespace NoteApp
             set
             {
                 _category = value;
+                OnPropertyChanged("Category");
                 Modified = DateTime.Now;
             }
 
@@ -91,6 +96,7 @@ namespace NoteApp
             set
             {
                 _text = value;
+                OnPropertyChanged("Text");
                 Modified = DateTime.Now;
             }
         }
@@ -201,6 +207,14 @@ namespace NoteApp
                 hashCode = (hashCode * 397) ^ _modified.GetHashCode();
                 return hashCode;
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 

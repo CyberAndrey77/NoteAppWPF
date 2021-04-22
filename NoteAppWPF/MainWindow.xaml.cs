@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NoteAppWPF.MVVM;
 
 namespace NoteAppWPF
 {
@@ -23,6 +24,7 @@ namespace NoteAppWPF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
 
         private void MenuAdd_OnClick(object sender, RoutedEventArgs e)
