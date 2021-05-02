@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Media3D;
-using NoteAppWPF.Annotations;
 using NoteApp;
+using NoteAppWPF.Annotations;
+using NoteAppWPF.MVVM.ViewModels.Base;
 
-namespace NoteAppWPF.MVVM
+namespace NoteAppWPF.MVVM.ViewModels
 {
-    class MainWindowViewModel: INotifyPropertyChanged
+    class MainWindowViewModel: BaseViewModel
     {
         private Note _selectedNote;
 
         private static string _path = ProjectManager.Path + ProjectManager.FileName;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Note> Notes { get; set; }
 
@@ -26,15 +19,8 @@ namespace NoteAppWPF.MVVM
 
         public Note SelectedNote
         {
-            get
-            {
-                return _selectedNote;
-            }
-            set
-            {
-                _selectedNote = value;
-                OnPropertyChanged("SelectedNote");
-            }
+            get => _selectedNote;
+            set => Set(ref _selectedNote, value);
         }
 
         public MainWindowViewModel()
@@ -56,12 +42,6 @@ namespace NoteAppWPF.MVVM
             };
             Notes.Add(newNote);
             //Project.Notes.Add(newNote);
-        }
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

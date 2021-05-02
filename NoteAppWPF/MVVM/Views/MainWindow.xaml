@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NoteAppWPF.MVVM" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        xmlns:viewModels="clr-namespace:NoteAppWPF.MVVM.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="NoteApp" Height="600" Width="1200" MinHeight="600" MinWidth="1200" Icon="icon.ico">
+        Title="NoteApp" Height="600" Width="1200" MinHeight="600" MinWidth="1200">
 
     <Window.Resources>
         <Style TargetType="TextBlock">
