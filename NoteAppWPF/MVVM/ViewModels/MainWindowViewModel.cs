@@ -13,10 +13,16 @@ namespace NoteAppWPF.MVVM.ViewModels
 
         private static string _path = ProjectManager.Path + ProjectManager.FileName;
 
+        /// <summary>
+        /// Коллецкция заметок.
+        /// </summary>
         public ObservableCollection<Note> Notes { get; set; }
 
         //public Project Project;
 
+        /// <summary>
+        /// Свойство выбранной заметки.
+        /// </summary>
         public Note SelectedNote
         {
             get => _selectedNote;

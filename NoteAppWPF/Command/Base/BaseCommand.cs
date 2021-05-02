@@ -7,18 +7,22 @@ using System.Windows.Input;
 
 namespace NoteAppWPF.Command.Base
 {
-    class BaseCommand: ICommand
+    internal abstract class BaseCommand: ICommand
     {
-        public bool CanExecute(object parameter)
+        public virtual bool CanExecute(object parameter)
         {
             throw new NotImplementedException();
         }
 
-        public void Execute(object parameter)
+        public virtual void Execute(object parameter)
         {
             throw new NotImplementedException();
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
+        }
     }
 }
