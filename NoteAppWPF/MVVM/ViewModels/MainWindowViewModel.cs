@@ -10,13 +10,19 @@ namespace NoteAppWPF.MVVM.ViewModels
     class MainWindowViewModel: BaseViewModel
     {
         private Note _selectedNote;
-        
+
         /// <summary>
         /// Коллецкция заметок.
         /// </summary>
-        public ObservableCollection<Note> Notes { get; set; }
+        //public ObservableCollection<Note> Notes { get; set; }
 
-        //public Project Project;
+        private Project _project;
+
+        public Project Project
+        {
+            get => _project;
+            set => Set(ref _project, value);
+        }
 
         /// <summary>
         /// Свойство выбранной заметки.
@@ -30,21 +36,21 @@ namespace NoteAppWPF.MVVM.ViewModels
         public MainWindowViewModel()
         {
             //Project = ProjectManager.LoadFile(_path);
-            Notes = new ObservableCollection<Note>();
+            Project = new Project();
             var newNote = new Note()
             {
                 Name = "123q",
                 Category = NoteCategory.Work,
                 Text = "dsasdweqweasd"
             };
-            Notes.Add(newNote);
+            Project.Notes.Add(newNote);
             newNote = new Note()
             {
                 Name = "123",
                 Category = NoteCategory.Documents,
                 Text = "dsasdвфывфывфывчясфы"
             };
-            Notes.Add(newNote);
+            Project.Notes.Add(newNote);
             //Project.Notes.Add(newNote);
         }
     }

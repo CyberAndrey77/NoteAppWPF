@@ -61,7 +61,7 @@ namespace NoteApp
                     throw new ArgumentException($"The note must have a title!");
                 }
                 _name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged(nameof(Name));
                 Modified = DateTime.Now;
             }
         }
@@ -78,7 +78,7 @@ namespace NoteApp
             set
             {
                 _category = value;
-                OnPropertyChanged("Category");
+                OnPropertyChanged(nameof(Category));
                 Modified = DateTime.Now;
             }
 
@@ -96,7 +96,7 @@ namespace NoteApp
             set
             {
                 _text = value;
-                OnPropertyChanged("Text");
+                OnPropertyChanged(nameof(Text));
                 Modified = DateTime.Now;
             }
         }
@@ -128,6 +128,7 @@ namespace NoteApp
             set
             {
                 _modified = value;
+                OnPropertyChanged(nameof(Modified));
             }
         }
 

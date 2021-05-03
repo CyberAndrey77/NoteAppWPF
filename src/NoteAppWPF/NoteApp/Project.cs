@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using NoteApp.Annotations;
 
 namespace NoteApp
 {
     /// <summary>
     /// Класс проект.
     /// </summary>
-    public class Project
+    public class Project : INotifyPropertyChanged
     {
         /// <summary>
         /// Задает и возвращает список классов заметки.
         /// </summary>
-        public List<Note> Notes { get; set; }
+        public ObservableCollection<Note> Notes { get; set; }
         
         /// <summary>
         /// Задает и возвращает индекс выбранной заметки.
@@ -26,7 +30,7 @@ namespace NoteApp
         /// </summary>
         public Project()
         {
-            Notes = new List<Note>();
+            Notes = new ObservableCollection<Note>();
         }
 
         /// <summary>
@@ -59,6 +63,14 @@ namespace NoteApp
             }
             
             return newNotes;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

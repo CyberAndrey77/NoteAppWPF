@@ -9,7 +9,7 @@ using NoteAppWPF.Annotations;
 
 namespace NoteAppWPF.MVVM.ViewModels.Base
 {
-    internal abstract class BaseViewModel: INotifyPropertyChanged
+    internal class BaseViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

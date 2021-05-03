@@ -14,9 +14,11 @@
             <Setter Property="FontSize" Value="16"></Setter>
         </Style>
     </Window.Resources>
+
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions >
             <RowDefinition Height="25"/>
@@ -30,7 +32,7 @@
 
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Select category:" TextAlignment="Left" Margin="5, 0, 0, 0"/>
         <ComboBox Grid.Column="0" Grid.Row="1" Margin="30, 0, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="260" FontSize="16"/>
-        <ListBox Grid.Column="0" Grid.Row="1" Margin="0, 30, 0, 0" ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote}">
+        <ListBox Grid.Column="0" Grid.Row="1" Margin="0, 30, 0, 0" ItemsSource="{Binding Project.Notes }" SelectedItem="{Binding SelectedNote}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
