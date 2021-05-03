@@ -10,9 +10,7 @@ namespace NoteAppWPF.MVVM.ViewModels
     class MainWindowViewModel: BaseViewModel
     {
         private Note _selectedNote;
-
-        private static string _path = ProjectManager.Path + ProjectManager.FileName;
-
+        
         /// <summary>
         /// Коллецкция заметок.
         /// </summary>

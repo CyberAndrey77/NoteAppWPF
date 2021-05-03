@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command\Base\BaseCommand.cs" />
+    <Compile Include="Command\CreateNoteCommand.cs" />
     <Compile Include="MVVM\ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="MVVM\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
